@@ -1,0 +1,8 @@
+x3 := x3 + 1;
+loop x1
+begin
+    x4 := x2 + 0;
+    loop x3 begin x2 := x2 + 1 end;
+    x3 := x4 + 0
+end;
+x0 := x2 + 0
