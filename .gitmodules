@@ -1,0 +1,3 @@
+[submodule "gti2-loop"]
+	path = gti2-loop
+	url = git@gitlab.wfailla.de:Studium/gti2-loop.git

@@ -88,10 +88,11 @@ class CalculationEvalMixin (BaseEvaluator):
         self._debug (" {} {} {} ".format (
             calculation.variable, calculation.operation[0], calculation.number
         ), end = False)
-        return reduce (
+        result = reduce (
             self._operation (calculation.operation),
             [self[calculation.variable], calculation.number]
         )
+        return result if result >= 0 else 0
 
 class OperationEvalMixin (BaseEvaluator):
     """
