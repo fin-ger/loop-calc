@@ -2,7 +2,7 @@
 <p>
   <img alt="PyPI" src="https://img.shields.io/pypi/v/loop-calc.svg">
   <a href="https://github.com/fin-ger/loop-calc/blob/master/LICENSE">
-    <img alt="License: GPL-2.0" src="https://img.shields.io/badge/License-GPL-2.0-yellow.svg" target="_blank" />
+    <img alt="License: GPL-2.0" src="https://img.shields.io/badge/License-GPL--2.0--or--later-yellow.svg" target="_blank" />
   </a>
   <a href="http://makeapullrequest.com">
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" target="_blank" />
