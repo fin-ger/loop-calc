@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="loop-calc",
-    version="0.1.0",
+    version="0.1.1",
     author="Fin Christensen",
     author_email="christensen.fin@gmail.com",
     description="This program evaluates loop programs as described in the lecture 'Grundlagen der theoretischen Informatik 2'.",
