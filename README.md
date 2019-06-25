@@ -1,28 +1,60 @@
-# Loop calculator
+<h1 align="center">Welcome to loop-calc 👋</h1>
+<p>
+  <img alt="PyPI" src="https://img.shields.io/pypi/v/loop-calc.svg">
+  <a href="https://github.com/fin-ger/loop-calc/blob/master/LICENSE">
+    <img alt="License: GPL-2.0" src="https://img.shields.io/badge/License-GPL-2.0-yellow.svg" target="_blank" />
+  </a>
+  <a href="http://makeapullrequest.com">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" target="_blank" />
+  </a>
+</p>
 
-This program evaluates loop programs as described in the lecture
-`Grundlagen der theoretischen Informatik 2`.
+> This program evaluates loop programs as described in the lecture `Grundlagen der theoretischen Informatik 2`.
 
 This software is written in python using pyparsing for language parsing.
 
-## How to build
+## Install
 
-In order to build this project just type `make` in the projects root directory.
-The build will then install all requirements for your local user via pip.
+```sh
+$ pip install loop-calc
+```
 
-This project was tested with python 3.4 and pip 8.1.1 on gentoo linux.
+## Usage
 
-## How to run
+To display all registers and steps of a loop program, run
 
-To run a loop program do `./loop-calc examples/fib.loop`. Have a look on the help page
-`./loop-calc --help` for more details.
+```sh
+$ loop-calc --debug ./path/to/program.loop
+```
 
-## Troubleshooting
+You can view all available options with
 
-#### `python3 is not installed on this system`
+```sh
+$ loop-calc --help
+```
 
-Make sure that python 3 is available over a `python3` executable in your `PATH`.
+Have a look at the `/examples` folder for a Fibonacci implementation in loop.
 
-#### `pip3 is not installed on this system`
+## Author
 
-Make sure that the `pip3` executable is available in your `PATH`.
+👤 **Fin Christensen**
+
+* Twitter: [@fin_ger_github](https://twitter.com/fin_ger_github)
+* Mastodon: [@fin_ger@mastodon.social](https://mastodon.social/@fin_ger)
+* Github: [@fin-ger](https://github.com/fin-ger)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/fin-ger/loop-calc/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2019 [Fin Christensen](https://github.com/fin-ger).<br />
+This project is [GPL-2.0](https://github.com/fin-ger/loop-calc/blob/master/LICENSE) licensed.
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
