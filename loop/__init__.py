@@ -21,21 +21,24 @@ import argparse
 
 from loop.loop_evaluator import LoopEvaluator
 
-def main ():
+def main():
+    '''
+    The main entry point for loop-calc
+    '''
     argv = sys.argv
-    parser = argparse.ArgumentParser (
-        prog = "loop-calc",
-        description = "Run a loop program from the command line."
+    parser = argparse.ArgumentParser(
+        prog="loop-calc",
+        description="Run a loop program from the command line.",
     )
 
-    parser.add_argument ("program", nargs = 1, metavar = "PROGRAM", type = str,
-                         help = "the path to the loop program")
-    parser.add_argument ("--debug", action = 'store_true',
-                         help = "show debugging information for the program")
-    parser.add_argument (
-        "parameters", nargs = '*', metavar = "PARAM", type = int,
-        help = "the parameters given to the loop program beginning with x1"
+    parser.add_argument("program", nargs=1, metavar="PROGRAM", type=str,
+                        help="the path to the loop program")
+    parser.add_argument("--debug", action='store_true',
+                        help="show debugging information for the program")
+    parser.add_argument(
+        "parameters", nargs='*', metavar="PARAM", type=int,
+        help="the parameters given to the loop program beginning with x1",
     )
-    args = parser.parse_args (argv[1:])
-    loop_eval = LoopEvaluator (debug = args.debug)
-    loop_eval.evaluate (args.program[0], *args.parameters)
+    args = parser.parse_args(argv[1:])
+    loop_eval = LoopEvaluator(debug=args.debug)
+    loop_eval.evaluate(args.program[0], *args.parameters)

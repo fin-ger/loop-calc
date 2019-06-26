@@ -20,38 +20,39 @@ from pyparsing import Literal, Combine, Word, Forward, Group, Suppress, ZeroOrMo
 from loop.base_evaluator import BaseEvaluator
 
 # atoms
-plus = Literal ('+')
-minus = Literal ('-')
+PLUS = Literal('+')
+MINUS = Literal('-')
 
-number = (Literal ('0') | Literal ('1')).setResultsName ("number").setParseAction (
-    lambda token: int (token[0])
+NUMBER = (Literal('0') | Literal('1')).setResultsName("number").setParseAction(
+    lambda token: int(token[0])
 )
 
-variable = Combine ('x' + Word ('0123456789')).setResultsName ("variable")
-assign = Suppress (':=')
-delimiter = Suppress (';')
-loop_kw = Suppress ('loop')
-begin_kw = Suppress ('begin')
-end_kw = Suppress ('end')
+VARIABLE = Combine('x' + Word('0123456789')).setResultsName("variable")
+ASSIGN = Suppress(':=')
+DELIMITER = Suppress(';')
+LOOP_KW = Suppress('loop')
+BEGIN_KW = Suppress('begin')
+END_KW = Suppress('end')
 
 # language parser
-loop = Forward ()
+LOOP = Forward()
 
 # expressions
-operation = Group (plus | minus).setResultsName ("operation")
-calculation = Group (variable + operation + number).setResultsName ("calculation")
-assignment = Group (variable + assign + calculation).setResultsName ("assignment")
-loop_expr = Group (loop_kw + variable + begin_kw + loop + end_kw).setResultsName ("loop")
-expression = Group (assignment | loop_expr).setResultsName ("expression")
+OPERATION = Group(PLUS | MINUS).setResultsName("operation")
+CALCULATION = Group(VARIABLE + OPERATION + NUMBER).setResultsName("calculation")
+ASSIGNMENT = Group(VARIABLE + ASSIGN + CALCULATION).setResultsName("assignment")
+LOOP_EXPR = Group(LOOP_KW + VARIABLE + BEGIN_KW + LOOP + END_KW).setResultsName("loop")
+EXPRESSION = Group(ASSIGNMENT | LOOP_EXPR).setResultsName("expression")
 
-loop << expression + ZeroOrMore (delimiter + expression)
+#pylint: disable=expression-not-assigned
+LOOP << EXPRESSION + ZeroOrMore(DELIMITER + EXPRESSION)
 
-class LoopParserMixin (BaseEvaluator):
+class LoopParserMixin(BaseEvaluator):
     """
     This mixin parses a program string to an AST.
     """
-    def _parse_string (self, program):
+    def _parse_string(self, program):
         """
         Parse a program string to an AST.
         """
-        return loop.parseString (program, parseAll = True)
+        return LOOP.parseString(program, parseAll=True)

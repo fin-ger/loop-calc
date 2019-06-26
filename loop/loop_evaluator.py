@@ -23,19 +23,18 @@ from loop.evaluators import (
 from loop.loop_parser import LoopParserMixin
 from loop.io_mixins import StackMixin, FileReaderMixin, ResultPrinterMixin, DebugMixin
 
-class LoopEvaluator (EvaluatorMixin,
-                     ProgramEvalMixin,
-                     OperationEvalMixin,
-                     CalculationEvalMixin,
-                     AssignmentEvalMixin,
-                     LoopEvalMixin,
-                     ExpressionEvalMixin,
-                     StackMixin,
-                     LoopParserMixin,
-                     FileReaderMixin,
-                     ResultPrinterMixin,
-                     DebugMixin):
+class LoopEvaluator(EvaluatorMixin,
+                    ProgramEvalMixin,
+                    OperationEvalMixin,
+                    CalculationEvalMixin,
+                    AssignmentEvalMixin,
+                    LoopEvalMixin,
+                    ExpressionEvalMixin,
+                    StackMixin,
+                    LoopParserMixin,
+                    FileReaderMixin,
+                    ResultPrinterMixin,
+                    DebugMixin):
     """
     The LoopEvaluator is able to parse and evaluate loop programs.
     """
-    pass

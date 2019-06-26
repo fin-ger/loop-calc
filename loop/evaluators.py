@@ -21,101 +21,102 @@ import operator
 from functools import reduce
 from loop.base_evaluator import BaseEvaluator
 
-class EvaluatorMixin (BaseEvaluator):
+class EvaluatorMixin(BaseEvaluator):
     """
     This mixin evaluates a given program.
     """
-    def evaluate (self, program, *args):
+    def evaluate(self, program, *args):
         """
         Evaluate a given program with the given parameters.
         """
-        self._set_parameters (*args)
-        self._program (self._parse_string (self._read_program (program)))
-        self._handle_result ()
+        self._set_parameters(*args)
+        self._program(self._parse_string(self._read_program(program)))
+        self._handle_result()
         return self['x0']
 
-class ExpressionEvalMixin (BaseEvaluator):
+class ExpressionEvalMixin(BaseEvaluator):
     """
     This mixin evaluates an expression.
     """
-    def _expression (self, expression):
+    def _expression(self, expression):
         """
         Evaluate an expression.
         """
         if "assignment" in expression:
-            self._assignment (expression.assignment)
-            self._debug ()
+            self._assignment(expression.assignment)
+            self._debug()
         elif "loop" in expression:
-            self._loop (expression.loop)
+            self._loop(expression.loop)
         else:
-            raise Exception ("Unknown expression")
+            raise Exception("Unknown expression")
 
-class LoopEvalMixin (BaseEvaluator):
+class LoopEvalMixin(BaseEvaluator):
     """
     This mixin evaluates a loop.
     """
-    def _loop (self, loop):
+    def _loop(self, loop):
         """
         Evaluate a loop expression.
         """
-        for i in range (0, self[loop.variable]):
-            self._debug ("looping over {} @ {:03}".format (loop.variable, i))
-            self._indent ()
+        for i in range(0, self[loop.variable]):
+            self._debug("looping over {} @ {:03}".format(loop.variable, i))
+            self._indent()
             for expression in loop:
-                if not isinstance (expression, str):
-                    self._expression (expression)
-            self._unindent ()
+                if not isinstance(expression, str):
+                    self._expression(expression)
+            self._unindent()
 
-class AssignmentEvalMixin (BaseEvaluator):
+class AssignmentEvalMixin(BaseEvaluator):
     """
     This mixin evaluates an assignment operator.
     """
-    def _assignment (self, assignment):
+    def _assignment(self, assignment):
         """
         Evaluate an assignment operator.
         """
-        self._debug ("{} :=".format (assignment.variable), end = False)
-        self[assignment.variable] = self._calculation (assignment.calculation)
+        self._debug("{} :=".format(assignment.variable), end=False)
+        #pylint: disable=assignment-from-no-return
+        self[assignment.variable] = self._calculation(assignment.calculation)
 
-class CalculationEvalMixin (BaseEvaluator):
+class CalculationEvalMixin(BaseEvaluator):
     """
     This mixin evaluates a calculation.
     """
-    def _calculation (self, calculation):
+    def _calculation(self, calculation):
         """
         Evaluate a calculation by reducing the given parameters with the given operator.
         """
-        self._debug (" {} {} {} ".format (
+        self._debug(" {} {} {} ".format(
             calculation.variable, calculation.operation[0], calculation.number
-        ), end = False)
-        result = reduce (
-            self._operation (calculation.operation),
+        ), end=False)
+        result = reduce(
+            self._operation(calculation.operation),
             [self[calculation.variable], calculation.number]
         )
         return result if result >= 0 else 0
 
-class OperationEvalMixin (BaseEvaluator):
+class OperationEvalMixin(BaseEvaluator):
     """
     This mixin evaluates an operation.
     """
-    def _operation (self, operation):
+    def _operation(self, operation):
         """
         Return the operator for a given operation for use in a reduce function.
         """
         if operation[0] == '+':
             return operator.add
-        elif operation[0] == '-':
+        if operation[0] == '-':
             return operator.sub
-        else:
-            raise Exception ("Unknown operator given!")
 
-class ProgramEvalMixin (BaseEvaluator):
+        raise Exception("Unknown operator given!")
+
+class ProgramEvalMixin(BaseEvaluator):
     """
     This mixin evaluates expressions of a program.
     """
-    def _program (self, program):
+    def _program(self, program):
         """
         Evaluate expressions of a program.
         """
         for expr in program:
-            self._expression (expr)
+            self._expression(expr)

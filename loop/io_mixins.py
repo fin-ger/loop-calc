@@ -20,115 +20,115 @@ import shutil
 
 from loop.base_evaluator import BaseEvaluator
 
-class StackMixin (BaseEvaluator):
+class StackMixin(BaseEvaluator):
     """
     This mixin manages the stack of a program.
     """
-    def __init__ (self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """
         Initialize a stack with a default value.
         """
-        super ().__init__ (*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._stack = [0]
 
-    def _check_stack (self, var):
+    def _check_stack(self, var):
         """
         Check if stack must be resized and return the correspoding index of the variable on the
         stack.
         """
-        idx = int (var[1])
-        stack_size = len (self._stack)
+        idx = int(var[1])
+        stack_size = len(self._stack)
         if stack_size <= idx:
             extend = [0] * (idx - stack_size + 1)
-            self._stack.extend (extend)
+            self._stack.extend(extend)
         return idx
 
-    def __getitem__ (self, variable):
+    def __getitem__(self, variable):
         """
         Read the value of the given variable from the stack.
         """
-        return self._stack[self._check_stack (variable)]
+        return self._stack[self._check_stack(variable)]
 
-    def __setitem__ (self, variable, value):
+    def __setitem__(self, variable, value):
         """
         Set the value of the given variable on the stack.
         """
-        self._stack[self._check_stack (variable)] = value
-        self._debug ("|".join (
-            " x{}: {:03} ".format (i, v) for i, v in enumerate (self._stack)
-        ), end = False, right = True)
+        self._stack[self._check_stack(variable)] = value
+        self._debug("|".join(
+            " x{}: {:03} ".format(i, v) for i, v in enumerate(self._stack)
+        ), end=False, right=True)
 
-    def _set_parameters (self, *args):
+    def _set_parameters(self, *args):
         """
         Set initial values of the stack with the given parameters where the first parameter
         corresponds x1, the second parameter corresponds x2, etc.
         """
-        self._stack.extend (args)
+        self._stack.extend(args)
 
-class FileReaderMixin (BaseEvaluator):
+class FileReaderMixin(BaseEvaluator):
     """
     This mixin reads a program string from file.
     """
-    def _read_program (self, program):
+    def _read_program(self, program):
         """
         Read a program string from file.
         """
-        with open (program, 'r') as f:
-            data = f.read ()
+        with open(program, 'r') as program_fd:
+            data = program_fd.read()
         return data
 
-class StringReaderMixin (BaseEvaluator):
+class StringReaderMixin(BaseEvaluator):
     """
     This mixin passes through a program string.
     """
-    def _read_program (self, program):
+    def _read_program(self, program):
         """
         Pass through a program string.
         """
         return program
 
-class ResultPrinterMixin (BaseEvaluator):
+class ResultPrinterMixin(BaseEvaluator):
     """
     This mixin prints the result of a program (x0) to the console.
     """
-    def _handle_result (self):
+    def _handle_result(self):
         """
         Print the result of a program (x0) to the console.
         """
-        print (self['x0'])
+        print(self['x0'])
 
-class DebugMixin (BaseEvaluator):
+class DebugMixin(BaseEvaluator):
     """
     This mixin enables debug output of a program if the debug keyword argument is given in the
     constructor.
     """
-    def __init__ (self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """
         Enable debug output of a program. Set debug keyword argument to True to enable it
         (default False).
         Set indent keyword argument to set the indentation level for loops.
         """
-        super ().__init__ (*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._indentation = kwargs["indent"] if "indent" in kwargs else 4
         self._do_debug = kwargs["debug"] if "debug" in kwargs else False
         self._indent_level = 0
-        self._term_size = shutil.get_terminal_size (fallback = (80, 24))
+        self._term_size = shutil.get_terminal_size(fallback=(80, 24))
         self._last_end = True
         self._cursor_pos = 0
 
-    def _indent (self):
+    def _indent(self):
         """
         Start a new indentation level (eg. beginning of loop).
         """
         self._indent_level += 1
 
-    def _unindent (self):
+    def _unindent(self):
         """
         End an indentation level (eg. end of loop).
         """
         self._indent_level -= 1
 
-    def _debug (self, msg = "", end = True, right = False):
+    def _debug(self, msg="", end=True, right=False):
         """
         If debug flag was set in the constructor this function will print debug information on the
         console.
@@ -139,13 +139,13 @@ class DebugMixin (BaseEvaluator):
         """
         if self._do_debug:
             indent = ' ' * self._indent_level * self._indentation if self._last_end else ""
-            s = "{}{}".format (indent, msg)
+            result = "{}{}".format(indent, msg)
             if right:
-                s = s.rjust (self._term_size.columns - self._cursor_pos)
+                result = result.rjust(self._term_size.columns - self._cursor_pos)
             if end:
-                print (s)
+                print(result)
                 self._cursor_pos = 0
             else:
-                self._cursor_pos += len (s)
-                print (s, end = "")
+                self._cursor_pos += len(result)
+                print(result, end="")
             self._last_end = end
