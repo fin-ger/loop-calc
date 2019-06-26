@@ -1,8 +1,10 @@
 <h1 align="center">Welcome to loop-calc 👋</h1>
 <p>
   <img alt="PyPI" src="https://img.shields.io/pypi/v/loop-calc.svg">
+  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/loop-calc.svg">
+  <img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/loop-calc.svg">
   <a href="https://github.com/fin-ger/loop-calc/blob/master/LICENSE">
-    <img alt="License: GPL-2.0" src="https://img.shields.io/badge/License-GPL--2.0--or--later-yellow.svg" target="_blank" />
+    <img alt="PyPI - License" src="https://img.shields.io/pypi/l/loop-calc.svg">
   </a>
   <a href="http://makeapullrequest.com">
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" target="_blank" />
