@@ -6,6 +6,9 @@
   <a href="https://github.com/fin-ger/loop-calc/blob/master/LICENSE">
     <img alt="PyPI - License" src="https://img.shields.io/pypi/l/loop-calc.svg">
   </a>
+  <a href="https://liberapay.com/fin-ger">
+    <img alt="Liberapay receiving" src="https://img.shields.io/liberapay/receives/fin-ger.svg">
+  </a>
   <a href="http://makeapullrequest.com">
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" target="_blank" />
   </a>
