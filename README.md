@@ -29,7 +29,7 @@ $ pip install loop-calc
 To display all registers and steps of a loop program, run
 
 ```sh
-$ loop-calc --debug ./path/to/program.loop
+$ loop-calc --debug ./path/to/program.loop var1 var2
 ```
 
 You can view all available options with
