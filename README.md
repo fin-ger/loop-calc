@@ -12,6 +12,10 @@
   <a href="http://makeapullrequest.com">
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" target="_blank" />
   </a>
+  <a href="https://offering.maintenance.rocks#https://github.com/fin-ger/loop-calc#author"
+     alt="Looking for Maintenance">
+    <img src="https://maintenance.rocks/badge.svg">
+  </a>
 </p>
 
 > This program evaluates loop programs as described in the lecture `Grundlagen der theoretischen Informatik 2`.
