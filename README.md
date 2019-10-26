@@ -12,7 +12,7 @@
   <a href="http://makeapullrequest.com">
     <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" target="_blank" />
   </a>
-  <a href="https://offering.maintenance.rocks#https://github.com/fin-ger/loop-calc#author"
+  <a href="https://offering.maintenance.rocks#https://github.com/fin-ger/loop-calc/blob/master/README.md#author"
      alt="Looking for Maintenance">
     <img src="https://maintenance.rocks/badge.svg">
   </a>
