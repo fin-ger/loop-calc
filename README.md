@@ -49,11 +49,11 @@ Have a look at the `/examples` folder for a Fibonacci implementation in loop.
 
 ## Author
 
-👤 **Fin Christensen**
+**Fin Christensen**
 
-* Twitter: [@fin_ger_github](https://twitter.com/fin_ger_github)
-* Mastodon: [@fin_ger@mastodon.social](https://mastodon.social/@fin_ger)
-* Github: [@fin-ger](https://github.com/fin-ger)
+> [:octocat: `@fin-ger`](https://github.com/fin-ger)  
+> [:elephant: `@fin_ger@weirder.earth`](https://weirder.earth/@fin_ger)  
+> [:bird: `@fin_ger_github`](https://twitter.com/fin_ger_github)  
 
 ## 🤝 Contributing
 
@@ -67,6 +67,3 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2019 [Fin Christensen](https://github.com/fin-ger).<br />
 This project is [GPL-2.0](https://github.com/fin-ger/loop-calc/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
